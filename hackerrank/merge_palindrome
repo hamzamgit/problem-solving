@@ -1,0 +1,82 @@
+"""
+Quiz:
+Example
+s1= 'aabbc' s2= 'ddefefq'
+All of the letters of the first string can make a palindrome.
+The choices using all letters are [abcba, bacab].
+All of the letters of the second string can make a palindrome. The choices using all letters are [defqfed, dfeqefd, edfqfde, efdqdfe, fdeqedf, fedqdef]. The two longest results in s1 have a length of 5. The six longest results in s2 have a length of 6. From the longest results for s1 and s2, merge the two that form the lowest merged palindrome, alphabetically. In this case, choose abcba and defqfed. The two palindromes can be combined to form a single palindrome if either the cor the q is discarded. The alphabetically smallest combined palindrome is abdefcfedba
+"""
+
+#Solution: 
+# This is a sample Python script.
+
+TEST_DATA = [
+    # {
+    #     "input": ['aabbc', 'ddefefq'],
+    #     "output": -1
+    # },
+    {
+        "input": ['aabbc', 'ddefefq'],
+        "output": "abdefcfedba"
+    },
+
+    {
+        "input": ['aab', 'cca'],
+        "output": "acaca"
+    },
+]
+
+
+def merge_palindrome(s1, s2):
+    """
+    :param s1:
+    :param s2:
+
+    1. Given 2 Strings, Check if they are palindrome,
+    2. create hash for each character for both strings following pattern ascii_value: count.
+    3. Compare if the keys are even numbers with 0-1 Odd Number
+    4. Create new string from selecting minimum ascii value at the edges and smalles odd value in the middle.
+    5.  return newly created string by confirming the output is palindrome.
+
+    :return:
+    Palindrome merged string
+    """
+    def generate_palindrom_string(hash_dict):
+        pass
+
+    def compare_odd_even_entries(hashes):
+        def filter_odd_even(val):
+            return "e" if val[1] % 2 == 0 else "o"
+        odd_even = list(map(filter_odd_even, hashes.items()))
+        count_evens = odd_even.count("e")
+        count_odds = odd_even.count("o")
+        return count_evens % 2 == 0 and count_odds // 2 < 2
+
+    hash_map = {}
+    for x in (s1 + s2):
+        # Generating Hashmap by following pattern ascii_value: count
+        if x in hash_map:
+            hash_map[ord(x)] = hash_map[ord(x)] + 1
+        else:
+            hash_map[ord(x)] = 1
+
+    sorted_hash = sorted(hash_map)
+
+    if compare_odd_even_entries(hash_map):
+        print("Create able")
+
+        # Create Palindrome String
+
+    else:
+        # Select Lowest Ascii ODD value.
+        return -1
+
+
+# Press the green button in the gutter to run the script.
+if __name__ == '__main__':
+    for data in TEST_DATA:
+        output = merge_palindrome(data["input"][0], data["input"][1])
+        print(f"DATA: {data} output: {output}")
+        assert output == data["output"]
+
+# See PyCharm help at https://www.jetbrains.com/help/pycharm/
